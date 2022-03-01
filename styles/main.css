@@ -1,4 +1,38 @@
+body {
+   background-color: #b6bdc0;
+}
+
 fieldset {
     display: flex;
     flex-direction: column;
+    border: 0;
+    
 }
+
+button {
+    margin: 10px 2px;
+    border-radius: 10px;
+    background-color: white;
+    color: darkslateblue; 
+}
+
+.buttonDiv {
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    color: darkslateblue;
+}
+
+form {
+    border-radius: 10px;
+    width: 250px;
+    border: 0;
+    background-color: darkslateblue;
+    color: white;
+}
+
+/* .dateAndMood {
+    width: 32%;
+} */
