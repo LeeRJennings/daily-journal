@@ -13,7 +13,8 @@ button {
     margin: 10px 2px;
     border-radius: 10px;
     background-color: white;
-    color: darkslateblue; 
+    color: darkslateblue;
+    font-weight: bold; 
 }
 
 .buttonDiv {
