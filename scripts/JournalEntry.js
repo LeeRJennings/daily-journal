@@ -2,11 +2,15 @@
  *  Purpose: To render a single journal entry as an
  *           HTML representation of the data
  */
-export const JournalEntryComponent = (entry) => {
+export const JournalEntryComponent = (entryObj) => {
     return `
-        <section id="entry--${entry.id}" class="journalEntry">
-            <h4>${entry.concept}</h4>
-            
+        <section id="entry--${entryObj.id}" class="journalEntry">
+            <h3>${entryObj.concept}</h3>
+            <div class="whiteSpace">
+                <p>${entryObj.entry}</p>
+                <p>Mood: ${entryObj.mood}</p>
+                <p>Posted on: ${entryObj.date}</p>
+            </div>
         </section>
     `
 }
