@@ -37,3 +37,15 @@ form {
 /* .dateAndMood {
     width: 32%;
 } */
+
+.entryLog {
+    background-color: darkslateblue;
+}
+
+.whiteSpace {
+    background-color: white;
+}
+
+h3 {
+    color: white;
+}
