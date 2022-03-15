@@ -1,0 +1,43 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "Lee",
+            "email": "Lee@lee.net"
+        }
+    ],
+    "posts": [
+        {
+            "id": 1,
+            "date": "07/24/2025",
+            "mood": "Ok",
+            "concept": "HTML & CSS",
+            "entry" : "We talked about HTML components and how to make grid layouts with Flexbox in CSS.",
+            "userId": 1
+        },
+        {
+            "id": 2,
+            "date": "02/15/2022",
+            "mood": "Ok",
+            "concept": "functions",
+            "entry" : "We started learning the fundamentals of js functions today. It was cool but also a lot of information and my brain hurt.",
+            "userId": 1
+        },
+        {
+            "id": 3,
+            "date": "02/23/2022",
+            "mood": "Happy",
+            "concept": "team projects and github",
+            "entry" : "Today we started our group projects. It's great to work with my classmates. The Github workflow flow charts are the best!",
+            "userId": 1
+        },
+        {
+            "id": 1,
+            "date": "03/01/2022",
+            "mood": "Happy",
+            "concept": "debugging",
+            "entry" : "We started learning how to debug js issues. I really liked the trouble-shooting aspect of it. Don't overlook tiny syntax issues.",
+            "userId": 1
+        }
+    ]
+}
