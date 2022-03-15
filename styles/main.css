@@ -1,5 +1,6 @@
 body {
    background-color: #b6bdc0;
+   font-family: 'Nunito Sans', sans-serif;
 }
 
 fieldset {
@@ -40,16 +41,19 @@ form {
 
 .entryLog {
     background-color: darkslateblue;
-    border-radius: 10px
+    border-radius: 10px;
+    width: 50%;
 }
 
 .whiteSpace {
     background-color: white;
     border: solid 15px darkslateblue;
     padding: 10px;
+    border-radius: 10px;
 }
 
 h3 {
     color: white;
     padding: 10px 10px 0 17px;
+    text-decoration: underline;
 }
