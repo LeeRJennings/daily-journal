@@ -1,15 +1,25 @@
 console.log("sup breh")
-import { EntryListComponent } from "./JournalEntryList.js"
+import { EntryListComponent, entryList } from "./feed/JournalEntryList.js"
 import { getUsers, getPosts } from "./data/dataManager.js"
 
-EntryListComponent()
+// EntryListComponent()
 
-getUsers()
-.then(data => {
-    console.log("User Data", data)
-})
+const showEntryList = () => {
+    //Get a reference to the location on the DOM where the list will display
+	const postElement = document.querySelector(".entryLog");
+	getPosts().then((allPosts) => {
+		postElement.innerHTML = entryList(allPosts);
+	})
+}
 
-getPosts()
-.then(data => {
-    console.log("Post Data", data)
-})
+showEntryList()
+
+// getUsers()
+// .then(data => {
+//     console.log("User Data", data)
+// })
+
+// getPosts()
+// .then(data => {
+//     console.log("Post Data", data)
+// })
