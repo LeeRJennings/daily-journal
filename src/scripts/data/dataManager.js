@@ -20,7 +20,7 @@ export const getUsers = () => {
 
 export const getPosts = () => {
 
-    return fetch("http://localhost:6464/posts")
+    return fetch("http://localhost:6464/posts?_sort=id&_order=desc")
     .then(response => response.json())
     .then(parsedResponse => {
         // do something with response here
