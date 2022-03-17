@@ -18,9 +18,13 @@ button {
     font-weight: bold; 
 }
 
-.buttonDiv {
+.recordButtonDiv {
     display: flex;
     justify-content: center;
+}
+
+.entryButtonDiv {
+    margin: 0 14px
 }
 
 h2 {

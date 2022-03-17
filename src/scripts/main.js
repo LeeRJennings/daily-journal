@@ -1,6 +1,7 @@
 console.log("sup breh")
 import { EntryListComponent, entryList } from "./feed/JournalEntryList.js"
 import { getUsers, getPosts } from "./data/dataManager.js"
+import { events } from "./helpers/events.js"
 
 // EntryListComponent()
 
@@ -12,7 +13,12 @@ const showEntryList = () => {
 	})
 }
 
-showEntryList()
+const journalStartUp = () => {
+	showEntryList()
+	events()
+}
+
+journalStartUp()
 
 // getUsers()
 // .then(data => {
