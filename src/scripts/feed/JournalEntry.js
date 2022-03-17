@@ -11,6 +11,10 @@ export const JournalEntryComponent = (entryObj) => {
                 <p>Mood: ${entryObj.mood}</p>
                 <p>Posted on: ${entryObj.date}</p>
             </div>
+            <div class="entryButtonDiv">
+                <button id="edit--${entryObj.id}">Edit</button>
+                <button id="delete--${entryObj.id}">Delete</button>
+            </div>
         </section>
     `
 }
