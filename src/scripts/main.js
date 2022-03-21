@@ -1,11 +1,12 @@
-console.log("sup breh")
-import { EntryListComponent, entryList } from "./feed/JournalEntryList.js"
-import { getUsers, getPosts } from "./data/dataManager.js"
-import { events } from "./helpers/events.js"
+console.log("filter isn't working correctly")
 
-// EntryListComponent()
+import { entryList } from "./feed/JournalEntryList.js"
+import { getUsers, getPosts, usePostCollection } from "./data/dataManager.js"
+import { events } from "./events/events.js"
+import { showNewEntryForm } from "./feed/newEntryForm.js"
+import { footer } from "./footer/footer.js"
 
-const showEntryList = () => {
+export const showEntryList = () => {
     //Get a reference to the location on the DOM where the list will display
 	const postElement = document.querySelector(".entryLog");
 	getPosts().then((allPosts) => {
@@ -13,9 +14,24 @@ const showEntryList = () => {
 	})
 }
 
+ export const showFilteredPosts = (year) => {
+	//get a copy of the post collection
+	const epoch = Date.parse(`01/01/${year}`);
+	//filter the data
+	const filteredData = usePostCollection().filter(singlePost => {
+	  if (singlePost.date >= epoch) {
+		return singlePost
+	  }
+	})
+	const postElement = document.querySelector(".entryLog");
+	postElement.innerHTML = entryList(filteredData);
+  }
+
 const journalStartUp = () => {
 	showEntryList()
 	events()
+	showNewEntryForm()
+	footer()
 }
 
 journalStartUp()
@@ -23,9 +39,4 @@ journalStartUp()
 // getUsers()
 // .then(data => {
 //     console.log("User Data", data)
-// })
-
-// getPosts()
-// .then(data => {
-//     console.log("Post Data", data)
-// })
+// }
