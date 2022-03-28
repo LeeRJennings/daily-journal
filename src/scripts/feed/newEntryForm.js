@@ -12,9 +12,9 @@ const newEntryForm = () => {
                         <fieldset>
                             <label for="mood">Mood for the Day:</label>
                             <select name="mood" id="mood">
-                                <option value="happy">Happy</option>
-                                <option value="ok">OK</option>
-                                <option value="sad">Sad</option>
+                                <option value="happy">happy</option>
+                                <option value="ok">ok</option>
+                                <option value="sad">sad</option>
                             </select>
                         </fieldset>
                     </div>

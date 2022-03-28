@@ -18,7 +18,6 @@ export const usePostCollection = () => {
 }
 
 export const getUsers = () => {
-
     return fetch("http://localhost:6464/users")
     .then(response => response.json())
     .then(parsedResponse => {

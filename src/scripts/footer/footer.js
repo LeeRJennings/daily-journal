@@ -7,11 +7,20 @@ export const footer = () => {
                     Lee Jennings, Nashville Software School: Cohort 55 &copy;${new Date().getFullYear()}
                 </div> 
                 <div class="footerText">
-                    Posts since 
+                    Posts since: 
                     <select id="yearSelection">
                         <option>2022</option>
                         <option>2021</option>
                         <option>2020</option>
+                    </select>
+                    <span id="postCount"></span>
+                </div>
+                <div class="footerText">
+                    Posts by mood: 
+                    <select id="moodSelection">
+                        <option>happy</option>
+                        <option>ok</option>
+                        <option>sad</option>
                     </select>
                     <span id="postCount"></span>
                 </div>
