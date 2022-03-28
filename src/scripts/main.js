@@ -6,9 +6,10 @@ import { events } from "./events/events.js"
 import { showNewEntryForm } from "./feed/newEntryForm.js"
 import { footer } from "./footer/footer.js"
 
+const postElement = document.querySelector(".entryLog");
+
 export const showEntryList = () => {
     //Get a reference to the location on the DOM where the list will display
-	const postElement = document.querySelector(".entryLog");
 	getPosts().then((allPosts) => {
 		postElement.innerHTML = entryList(allPosts);
 	})
@@ -19,13 +20,22 @@ export const showEntryList = () => {
 	const epoch = Date.parse(`01/01/${year}`);
 	//filter the data
 	const filteredData = usePostCollection().filter(singlePost => {
-	  if (singlePost.date >= epoch) {
-		return singlePost
+		if (singlePost.date >= epoch) {
+			console.log(singlePost.date)
+			return singlePost
 	  }
 	})
-	const postElement = document.querySelector(".entryLog");
 	postElement.innerHTML = entryList(filteredData);
   }
+
+export const moodFilteredPosts = (mood) => {
+	const filteredData = usePostCollection().filter(singlePost => {
+		if (singlePost.mood === mood) {
+			return singlePost
+		}
+	})
+	postElement.innerHTML = entryList(filteredData)
+}
 
 const journalStartUp = () => {
 	showEntryList()

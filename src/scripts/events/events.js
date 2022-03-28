@@ -1,5 +1,5 @@
 import { getLoggedInUser, createPost } from "../data/dataManager.js"
-import { showEntryList, showFilteredPosts } from "../main.js" 
+import { showEntryList, showFilteredPosts, moodFilteredPosts } from "../main.js" 
 
 export const events = () => {
     const mainEl = document.querySelector("main")
@@ -21,7 +21,24 @@ export const events = () => {
             alert("Sure would be nice if this did something, right?")
         }
     })
-    // function that clears out the input field
+    
+    document.querySelector("footer").addEventListener("change", event => {
+        if (event.target.id === "yearSelection") {
+          const yearAsNumber = parseInt(event.target.value)
+          console.log(`User wants to see posts since ${yearAsNumber}`)
+          //invoke a filter function passing the year as an argument
+          showFilteredPosts(yearAsNumber);
+        }
+      })
+
+      document.querySelector("footer").addEventListener("change", event => {
+        if (event.target.id === "moodSelection") {
+            const moodToFilterBy = event.target.value
+            moodFilteredPosts(moodToFilterBy)
+        }
+      })
+    
+      // function that clears out the input field
     const clearEntryField = () => {
         document.querySelector("input[name='journalDate']").value = ""
         document.querySelector("select[name='mood']").value = ""
@@ -62,12 +79,4 @@ export const events = () => {
         }
     })
 
-    document.querySelector("footer").addEventListener("change", event => {
-        if (event.target.id === "yearSelection") {
-          const yearAsNumber = parseInt(event.target.value)
-          console.log(`User wants to see posts since ${yearAsNumber}`)
-          //invoke a filter function passing the year as an argument
-          showFilteredPosts(yearAsNumber);
-        }
-      })
 }
