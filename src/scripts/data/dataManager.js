@@ -46,3 +46,13 @@ export const createPost = postObj => {
     })
         .then(response => response.json())
   }
+
+export const deleteEntry = postId => {
+    return fetch(`http://localhost:6464/posts/${postId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+        .then(response => response.json())
+}

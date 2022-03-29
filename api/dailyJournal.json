@@ -9,7 +9,7 @@
   "posts": [
     {
       "date": "2025-07-24",
-      "mood": "Ok",
+      "mood": "ok",
       "concept": "HTML & CSS",
       "entry": "We talked about HTML components and how to make grid layouts with Flexbox in CSS.",
       "userId": 1,
@@ -17,7 +17,7 @@
     },
     {
       "date": "2022-02-15",
-      "mood": "Ok",
+      "mood": "ok",
       "concept": "functions",
       "entry": "We started learning the fundamentals of js functions today. It was cool but also a lot of information and my brain hurt.",
       "userId": 1,
@@ -25,7 +25,7 @@
     },
     {
       "date": "2022-02-23",
-      "mood": "Happy",
+      "mood": "happy",
       "concept": "team projects and github",
       "entry": "Today we started our group projects. It's great to work with my classmates. The Github workflow flow charts are the best!",
       "userId": 1,
@@ -33,59 +33,11 @@
     },
     {
       "date": "2022-03-01",
-      "mood": "Happy",
+      "mood": "happy",
       "concept": "debugging",
       "entry": "We started learning how to debug js issues. I really liked the trouble-shooting aspect of it. Don't overlook tiny syntax issues.",
       "userId": 1,
       "id": 4
-    },
-    {
-      "date": "2222-02-22",
-      "mood": "ok",
-      "concept": "TEST",
-      "entry": "TEST",
-      "userId": 1,
-      "id": 5
-    },
-    {
-      "date": "1111-11-11",
-      "mood": "sad",
-      "concept": "TEST 2",
-      "entry": "TEST 2",
-      "userId": 1,
-      "id": 6
-    },
-    {
-      "date": "2077-12-31",
-      "mood": "happy",
-      "concept": "TEST 3",
-      "entry": "TEST 3",
-      "userId": 1,
-      "id": 7
-    },
-    {
-      "date": "2022-03-20",
-      "mood": "ok",
-      "concept": "TEST 4",
-      "entry": "TEST 4",
-      "userId": 1,
-      "id": 8
-    },
-    {
-      "date": "1991-10-02",
-      "mood": "happy",
-      "concept": "DATE TEST",
-      "entry": "Will this show up first?",
-      "userId": 1,
-      "id": 9
-    },
-    {
-      "date": "2022-03-28",
-      "mood": "ok",
-      "concept": "mood test",
-      "entry": "What does the mood look like?",
-      "userId": 1,
-      "id": 10
     }
   ]
 }
