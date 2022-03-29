@@ -25,4 +25,4 @@ export const showJournalEntry = () => {
     //Get a reference to the location on the DOM where the nav will display
     const entryElement = document.querySelector(".entryLog");
     entryElement.innerHTML = JournalEntry();
-  }
+}

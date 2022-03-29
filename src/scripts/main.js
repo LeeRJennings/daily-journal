@@ -15,13 +15,9 @@ export const showEntryList = () => {
 	})
 }
 
- export const showFilteredPosts = (year) => {
-	//get a copy of the post collection
-	const epoch = Date.parse(`01/01/${year}`);
-	//filter the data
+ export const yearFilteredPosts = (year) => {
 	const filteredData = usePostCollection().filter(singlePost => {
-		if (singlePost.date >= epoch) {
-			console.log(singlePost.date)
+		if (singlePost.date.split("-")[0] >= year) {
 			return singlePost
 	  }
 	})

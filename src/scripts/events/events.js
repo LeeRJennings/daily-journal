@@ -1,14 +1,9 @@
-import { getLoggedInUser, createPost } from "../data/dataManager.js"
-import { showEntryList, showFilteredPosts, moodFilteredPosts } from "../main.js" 
+import { getLoggedInUser, createPost, deleteEntry } from "../data/dataManager.js"
+import { showEntryList, yearFilteredPosts, moodFilteredPosts } from "../main.js" 
 
 export const events = () => {
     const mainEl = document.querySelector("main")
-
-    mainEl.addEventListener("click", event => {
-        if (event.target.className === "journalEntry") {
-            confirm(`You just clicked post #${event.target.id.split("--")[1]}`)
-        }
-    })
+    const footerEl = document.querySelector("footer")
 
     mainEl.addEventListener("click", event => {
         if (event.target.id.startsWith("edit")) {
@@ -16,22 +11,16 @@ export const events = () => {
         }
     })
 
-    mainEl.addEventListener("click", event => {
-        if (event.target.id.startsWith("delete")) {
-            alert("Sure would be nice if this did something, right?")
-        }
-    })
-    
-    document.querySelector("footer").addEventListener("change", event => {
+    footerEl.addEventListener("change", event => {
         if (event.target.id === "yearSelection") {
           const yearAsNumber = parseInt(event.target.value)
           console.log(`User wants to see posts since ${yearAsNumber}`)
           //invoke a filter function passing the year as an argument
-          showFilteredPosts(yearAsNumber);
+          yearFilteredPosts(yearAsNumber);
         }
       })
 
-      document.querySelector("footer").addEventListener("change", event => {
+    footerEl.addEventListener("change", event => {
         if (event.target.id === "moodSelection") {
             const moodToFilterBy = event.target.value
             moodFilteredPosts(moodToFilterBy)
@@ -79,4 +68,11 @@ export const events = () => {
         }
     })
 
+    mainEl.addEventListener("click", event => {
+        if (event.target.id.startsWith("delete")) {
+            const postId = event.target.id.split("--")[1]
+            deleteEntry(postId)
+            .then(showEntryList)
+        }
+    })
 }
