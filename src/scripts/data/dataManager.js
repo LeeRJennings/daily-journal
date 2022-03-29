@@ -47,7 +47,7 @@ export const createPost = postObj => {
         .then(response => response.json())
   }
 
-export const deleteEntry = postId => {
+export const deletePost = postId => {
     return fetch(`http://localhost:6464/posts/${postId}`, {
         method: "DELETE",
         headers: {
@@ -55,4 +55,20 @@ export const deleteEntry = postId => {
         }
     })
         .then(response => response.json())
+}
+
+export const getSinglePost = (postId) => {
+    return fetch(`http://localhost:6464/posts/${postId}`)
+        .then(response => response.json())
+}
+
+export const updatePost = postObj => {
+    return fetch(`http://localhost:6464/posts/${postObj.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(postObj)
+    })
+        .then(response => response.json()) 
 }

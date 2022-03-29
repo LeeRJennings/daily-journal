@@ -1,20 +1,14 @@
-import { getLoggedInUser, createPost, deleteEntry } from "../data/dataManager.js"
-import { showEntryList, yearFilteredPosts, moodFilteredPosts } from "../main.js" 
+import { getLoggedInUser, createPost, deletePost, getSinglePost, updatePost } from "../data/dataManager.js"
+import { showNewEntryForm } from "../feed/newEntryForm.js"
+import { showEntryList, yearFilteredPosts, moodFilteredPosts, showEdit } from "../main.js" 
 
 export const events = () => {
     const mainEl = document.querySelector("main")
     const footerEl = document.querySelector("footer")
 
-    mainEl.addEventListener("click", event => {
-        if (event.target.id.startsWith("edit")) {
-            console.log(`The user would like to edit post #${event.target.id.split("--")[1]}`)
-        }
-    })
-
     footerEl.addEventListener("change", event => {
         if (event.target.id === "yearSelection") {
           const yearAsNumber = parseInt(event.target.value)
-          console.log(`User wants to see posts since ${yearAsNumber}`)
           //invoke a filter function passing the year as an argument
           yearFilteredPosts(yearAsNumber);
         }
@@ -71,8 +65,57 @@ export const events = () => {
     mainEl.addEventListener("click", event => {
         if (event.target.id.startsWith("delete")) {
             const postId = event.target.id.split("--")[1]
-            deleteEntry(postId)
+            deletePost(postId)
             .then(showEntryList)
+        }
+    })
+
+    mainEl.addEventListener("click", event => {
+        if (event.target.id.startsWith("edit")) {
+            const postId = event.target.id.split("--")[1]
+            getSinglePost(postId)
+            .then(response => {
+                showEdit(response)
+            })
+            window.scrollTo({
+                top: 20,
+                left: 0,
+                behavior: "smooth",
+              });
+        }
+    })
+
+    mainEl.addEventListener("click", event => {
+        if (event.target.id.startsWith("updateEntryButton")) {
+            const postId = event.target.id.split("--")[1]
+
+            let date = document.querySelector("input[name='postDate']").value
+            let mood = document.querySelector("input[name='mood']").value
+            let concept = document.querySelector("input[name='conceptsCovered']").value
+            let journalEntry = document.querySelector("textarea[name='journalEntry']").value
+
+            const postObject = {
+                date: date,
+                mood: mood,
+                concept: concept,
+                entry : journalEntry,
+                userId: getLoggedInUser().id,
+                id: parseInt(postId)
+            }
+
+            updatePost(postObject)
+            .then(response => {
+                showEntryList()
+            })
+            .then(response => {
+                showNewEntryForm()
+            })
+        }
+    })
+
+    mainEl.addEventListener("click", event => {
+        if (event.target.id === "cancelEditButton") {
+            showNewEntryForm()
         }
     })
 }

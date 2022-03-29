@@ -1,7 +1,3 @@
-/*
- *  Purpose: To render a single journal entry as an
- *           HTML representation of the data
- */
 import { formatDate } from "../helpers/formatDate.js";
 
 export const JournalEntry = (entryObj) => {

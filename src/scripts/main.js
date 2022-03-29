@@ -1,10 +1,9 @@
-console.log("filter isn't working correctly")
-
 import { entryList } from "./feed/JournalEntryList.js"
 import { getUsers, getPosts, usePostCollection } from "./data/dataManager.js"
 import { events } from "./events/events.js"
 import { showNewEntryForm } from "./feed/newEntryForm.js"
 import { footer } from "./footer/footer.js"
+import { postEdit } from "./feed/postEdit.js"
 
 const postElement = document.querySelector(".entryLog");
 
@@ -33,6 +32,11 @@ export const moodFilteredPosts = (mood) => {
 	postElement.innerHTML = entryList(filteredData)
 }
 
+export const showEdit = (postObj) => {
+	const newEntryEl = document.querySelector(".journalEntryForm")
+	newEntryEl.innerHTML = postEdit(postObj)
+}
+
 const journalStartUp = () => {
 	showEntryList()
 	events()
@@ -41,8 +45,3 @@ const journalStartUp = () => {
 }
 
 journalStartUp()
-
-// getUsers()
-// .then(data => {
-//     console.log("User Data", data)
-// }

@@ -29,11 +29,14 @@ button {
 }
 
 h2 {
-    color: darkslateblue;
+    color: white;
     margin-left: 10px;
+    margin-bottom: 5px;
+
 }
 
 form {
+    margin-top: 10px;
     border-radius: 10px;
     width: 250px;
     border: 0;
