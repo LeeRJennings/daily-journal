@@ -38,6 +38,14 @@
       "entry": "We started learning how to debug js issues. I really liked the trouble-shooting aspect of it. Don't overlook tiny syntax issues.",
       "userId": 1,
       "id": 4
+    },
+    {
+      "date": "2022-03-29",
+      "mood": "ok",
+      "concept": "I can edit this!",
+      "entry": "Wow! So neat!!!",
+      "userId": 1,
+      "id": 5
     }
   ]
 }

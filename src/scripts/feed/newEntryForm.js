@@ -1,7 +1,5 @@
 const newEntryForm = () => {
     return `
-    <h2>Daily Journal</h2>
-            
                 <form action="">
                     <div class="dateAndMood">
                         <fieldset>
