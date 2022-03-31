@@ -5,6 +5,7 @@ import { showEntryList, yearFilteredPosts, moodFilteredPosts, showEdit } from ".
 export const events = () => {
     const mainEl = document.querySelector("main")
     const footerEl = document.querySelector("footer")
+    const headerEl = document.querySelector("header")
 
     footerEl.addEventListener("change", event => {
         if (event.target.id === "yearSelection") {
@@ -78,7 +79,7 @@ export const events = () => {
                 showEdit(response)
             })
             window.scrollTo({
-                top: 20,
+                top: 12,
                 left: 0,
                 behavior: "smooth",
               });
@@ -116,6 +117,16 @@ export const events = () => {
     mainEl.addEventListener("click", event => {
         if (event.target.id === "cancelEditButton") {
             showNewEntryForm()
+        }
+    })
+
+    headerEl.addEventListener("click", event => {
+        if (event.target.id === "homeIcon") {
+            window.scrollTo({
+                top: 12,
+                left: 0,
+                behavior: "smooth",
+              }) 
         }
     })
 }
