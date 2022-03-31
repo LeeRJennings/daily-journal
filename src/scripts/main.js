@@ -4,6 +4,7 @@ import { events } from "./events/events.js"
 import { showNewEntryForm } from "./feed/newEntryForm.js"
 import { footer } from "./footer/footer.js"
 import { postEdit } from "./feed/postEdit.js"
+import { header } from "../header/header.js"
 
 const postElement = document.querySelector(".entryLog");
 
@@ -39,9 +40,10 @@ export const showEdit = (postObj) => {
 
 const journalStartUp = () => {
 	showEntryList()
-	events()
 	showNewEntryForm()
 	footer()
+	header()
 }
 
+events()
 journalStartUp()

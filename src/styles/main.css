@@ -1,7 +1,7 @@
 body {
    background-color: #b6bdc0;
    font-family: 'Nunito Sans', sans-serif;
-   margin: 0 0 50px 0;
+   margin: 115px 0 60px 0;
 }
 
 fieldset {
@@ -75,7 +75,7 @@ h3 {
     display: flex;
     flex-wrap: nowrap;
     justify-content: start;
-    border-bottom: 2px solid darkslateblue;
+    border-bottom: 4px solid darkslateblue;
     margin-left: 0;
     padding: 0.5em 0 0.5em 1em;
     margin-bottom: 2em;
@@ -97,4 +97,28 @@ h3 {
 
 .footerText {
     margin: 0 50px 0 0;
+}
+
+header {
+    background-color: #6e777a;
+    display: flex;
+    color: darkslateblue;
+    border-top: 4px solid darkslateblue;
+    position: fixed;
+    margin-left: 0;
+    width: 100%;
+    top: 0;
+    z-index: 11;
+
+}
+
+#homeIcon {
+    height: 70px;
+    margin: 5px 20px 5px 3px 
+}
+
+#searchBar {
+    margin: 27px 0 30px 40px;
+    height: 18px;
+    
 }
