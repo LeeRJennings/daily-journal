@@ -4,11 +4,16 @@
       "id": 1,
       "name": "Lee",
       "email": "Lee@lee.net"
+    },
+    {
+      "name": "Davos",
+      "email": "davos@cat.com",
+      "id": 2
     }
   ],
   "posts": [
     {
-      "date": "2025-07-24",
+      "date": "2021-07-24",
       "mood": "ok",
       "concept": "HTML & CSS",
       "entry": "We talked about HTML components and how to make grid layouts with Flexbox in CSS.",
@@ -38,6 +43,14 @@
       "entry": "We started learning how to debug js issues. I really liked the trouble-shooting aspect of it. Don't overlook tiny syntax issues.",
       "userId": 1,
       "id": 4
+    },
+    {
+      "date": "2022-03-31",
+      "mood": "happy",
+      "concept": "time test",
+      "entry": "testing the time",
+      "userId": 2,
+      "id": 5
     }
   ]
 }

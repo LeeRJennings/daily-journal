@@ -1,28 +1,17 @@
-import { getLoggedInUser, createPost, deletePost, getSinglePost, updatePost } from "../data/dataManager.js"
+import { getLoggedInUser, createPost, deletePost, getSinglePost, updatePost, logoutUser, loginUser, registerUser, getUsersPosts } from "../data/dataManager.js"
 import { showNewEntryForm } from "../feed/newEntryForm.js"
-import { showEntryList, yearFilteredPosts, moodFilteredPosts, showEdit } from "../main.js" 
+import { showEntryList, yearFilteredPosts, moodFilteredPosts, showEdit, journalStartUp, checkForUser } from "../main.js" 
+import { loginForm } from "../auth/loginForm.js"
+import { registerForm } from "../auth/registerForm.js"
+import { entryList } from "../feed/JournalEntryList.js"
 
 export const events = () => {
+//========================================================= variables pointing to different parts of the DOM =========================================================
     const mainEl = document.querySelector("main")
     const footerEl = document.querySelector("footer")
     const headerEl = document.querySelector("header")
 
-    footerEl.addEventListener("change", event => {
-        if (event.target.id === "yearSelection") {
-          const yearAsNumber = parseInt(event.target.value)
-          //invoke a filter function passing the year as an argument
-          yearFilteredPosts(yearAsNumber);
-        }
-      })
-
-    footerEl.addEventListener("change", event => {
-        if (event.target.id === "moodSelection") {
-            const moodToFilterBy = event.target.value
-            moodFilteredPosts(moodToFilterBy)
-        }
-      })
-    
-      // function that clears out the input field
+//========================================================= function to clear out fields on new entry form =========================================================
     const clearEntryField = () => {
         document.querySelector("input[name='journalDate']").value = ""
         document.querySelector("select[name='mood']").value = ""
@@ -30,7 +19,38 @@ export const events = () => {
         document.querySelector("textarea[name='journalEntry']").value = ""
     }
 
-    // event listener that clears out the input fields when the cancel button is clicked
+//========================================================= scrolls to top of the page =========================================================
+    headerEl.addEventListener("click", event => {
+        if (event.target.id === "homeIcon") {
+            window.scrollTo({
+                top: 12,
+                left: 0,
+                behavior: "smooth",
+            }) 
+        }
+    })
+
+//========================================================= logs a user out =========================================================
+    headerEl.addEventListener("click", event => {
+        if (event.target.id === "logout") {
+            logoutUser()
+            sessionStorage.clear()
+            checkForUser()
+        }
+    })
+
+//=========================================================  =========================================================
+    headerEl.addEventListener("click", event => {
+        if (event.target.id === "seeUsersPosts") {
+            const entryEl = document.querySelector(".entryLog")
+            getUsersPosts()
+            .then(posts => {
+                entryEl.innerHTML = entryList(posts)
+            })
+        }
+    })
+
+//========================================================= clear out fields on new entry form on button click =========================================================
     mainEl.addEventListener("click", event => {
         if (event.target.id === "cancelEntryButton") {
             clearEntryField()
@@ -38,7 +58,7 @@ export const events = () => {
     })
     
       
-    //event listener that creates a new post when the save button is clicked
+//========================================================= saves a new post =========================================================
     mainEl.addEventListener("click", event => {
         // event.preventDefault();
         if (event.target.id === "recordEntryButton") {
@@ -63,6 +83,7 @@ export const events = () => {
         }
     })
 
+//========================================================= deletes a post =========================================================
     mainEl.addEventListener("click", event => {
         if (event.target.id.startsWith("delete")) {
             const postId = event.target.id.split("--")[1]
@@ -71,6 +92,7 @@ export const events = () => {
         }
     })
 
+//========================================================= begins edits on a single post =========================================================
     mainEl.addEventListener("click", event => {
         if (event.target.id.startsWith("edit")) {
             const postId = event.target.id.split("--")[1]
@@ -86,6 +108,7 @@ export const events = () => {
         }
     })
 
+//========================================================= saves edits on a single post =========================================================
     mainEl.addEventListener("click", event => {
         if (event.target.id.startsWith("updateEntryButton")) {
             const postId = event.target.id.split("--")[1]
@@ -114,19 +137,63 @@ export const events = () => {
         }
     })
 
+//========================================================= shows new entry form when cancel button for edit form clicked =========================================================
     mainEl.addEventListener("click", event => {
         if (event.target.id === "cancelEditButton") {
             showNewEntryForm()
         }
     })
 
-    headerEl.addEventListener("click", event => {
-        if (event.target.id === "homeIcon") {
-            window.scrollTo({
-                top: 12,
-                left: 0,
-                behavior: "smooth",
-              }) 
+//========================================================= logs existing user into the site =========================================================
+    mainEl.addEventListener("click", event => {
+        if (event.target.id === "login--submit") {
+            const userObject = {
+                name: document.querySelector("input[name='name']").value,
+                email: document.querySelector("input[name='email']").value
+            }
+            loginUser(userObject)
+            .then(dbUserObj => {
+                if(dbUserObj) {
+                    sessionStorage.setItem("user", JSON.stringify(dbUserObj))
+                    journalStartUp()
+                } else {
+                    const entryEl = document.querySelector(".journalEntryForm")
+                    entryEl.innerHTML = `<p class="center">That user does not exist. Right to jail. We have the best users. Because of jail. <br> You can also try again, or sign up for free.</p> ${loginForm()} <hr/> <hr/> ${registerForm()}`
+                }
+            })
         }
     })
+
+//========================================================= registers a new user and logs them in =========================================================
+    mainEl.addEventListener("click", event => {
+        if (event.target.id === "register--submit") {
+            const userObject = {
+                name: document.querySelector("input[name='registerName']").value,
+                email: document.querySelector("input[name='registerEmail']").value
+            }
+            registerUser(userObject)
+            .then(dbUserObj => {
+                sessionStorage.setItem("user", JSON.stringify(dbUserObj))
+                journalStartUp()
+            })
+        }
+    })
+
+//========================================================= filters posts by year =========================================================
+    footerEl.addEventListener("change", event => {
+        if (event.target.id === "yearSelection") {
+        const yearAsNumber = parseInt(event.target.value)
+        //invoke a filter function passing the year as an argument
+        yearFilteredPosts(yearAsNumber);
+        }
+    })
+
+//========================================================= filters posts by mood =========================================================
+    footerEl.addEventListener("change", event => {
+        if (event.target.id === "moodSelection") {
+            const moodToFilterBy = event.target.value
+            moodFilteredPosts(moodToFilterBy)
+        }
+    })
+
 }

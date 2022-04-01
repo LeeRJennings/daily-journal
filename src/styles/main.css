@@ -30,9 +30,15 @@ button {
 
 h2 {
     color: white;
-    margin-left: 10px;
-    margin-bottom: 5px;
+    padding: 10px 10px 0 17px;
+    text-decoration: underline;
+}
 
+/* TODO change margins for h2 and h4 to make them less spaced out AND make the See My Posts button not look like poop */
+
+h4 {
+    color: white;
+    padding: 10px 10px 0 17px;
 }
 
 form {
@@ -101,7 +107,7 @@ h3 {
 
 header {
     background-color: #6e777a;
-    display: flex;
+    /* display: flex; */
     color: darkslateblue;
     border-top: 4px solid darkslateblue;
     position: fixed;
@@ -114,11 +120,56 @@ header {
 
 #homeIcon {
     height: 70px;
-    margin: 5px 20px 5px 3px 
+    margin: 5px 20px 5px 3px;
+}
+
+#homeIcon:hover {
+    transform: scale(.90)
+}
+
+#homeIcon:active {
+    transform: scale(.8)
 }
 
 #searchBar {
     margin: 27px 0 30px 40px;
     height: 18px;
-    
+}
+
+#logout {
+    color: darkslateblue;
+    cursor: pointer;
+    text-decoration: underline;
+    background: none!important;
+    border: none;
+    margin-right: 1em;
+    margin-top: 1.7em;
+    font-size: 17px;;
+}
+
+#logout:hover {
+    transform: scale(.9)
+}
+
+#logout:active {
+    transform: scale(.8)
+}
+
+#navBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#notTheLogoutDiv {
+    display: flex;
+}
+
+.loginRegister {
+    display: flex;
+    justify-content: center 
+}
+
+.loginRegister h3 {
+    color: darkslateblue
 }
