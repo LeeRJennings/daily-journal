@@ -34,7 +34,7 @@ export const getPosts = () => {
     return fetch("http://localhost:6464/posts?_sort=date&_order=desc&_expand=user")
     .then(response => response.json())
     .then(parsedResponse => {
-        console.log("data with user", parsedResponse)
+        // console.log("data with user", parsedResponse)
         postCollection = parsedResponse
         return parsedResponse;
     })
@@ -102,7 +102,6 @@ export const loginUser =(userObj) => {
     return fetch(`http://localhost:6464/users?name=${userObj.name}&email=${userObj.email}`)
     .then(response => response.json())
     .then(parsedUser => {
-        console.log("parsedUser", parsedUser)
         if (parsedUser.length > 0) {
             setLoggedInUser(parsedUser[0])
             return getLoggedInUser()
