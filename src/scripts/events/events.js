@@ -11,6 +11,7 @@ export const events = () => {
     const footerEl = document.querySelector("footer")
     const headerEl = document.querySelector("header")
 
+
 //========================================================= function to clear out fields on new entry form =========================================================
     const clearEntryField = () => {
         document.querySelector("input[name='journalDate']").value = ""
@@ -39,7 +40,7 @@ export const events = () => {
         }
     })
 
-//=========================================================  =========================================================
+//========================================================= displays posts only from logged in user =========================================================
     headerEl.addEventListener("click", event => {
         if (event.target.id === "seeUsersPosts") {
             const entryEl = document.querySelector(".entryLog")
@@ -47,6 +48,21 @@ export const events = () => {
             .then(posts => {
                 entryEl.innerHTML = entryList(posts)
             })
+            const buttonEl = document.querySelector(".seeUsersPostsDiv")
+            buttonEl.innerHTML = `
+                <button id="seeAllPosts">See All Posts</button>
+            `
+        }
+    })
+
+//=========================================================  =========================================================
+    headerEl.addEventListener("click", event => {
+        if (event.target.id === "seeAllPosts") {
+        showEntryList()
+        const buttonEl = document.querySelector(".seeUsersPostsDiv")
+        buttonEl.innerHTML = `
+            <button id="seeUsersPosts">See My Posts</button>
+        `
         }
     })
 

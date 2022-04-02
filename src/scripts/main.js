@@ -1,4 +1,4 @@
-// TODO 1) make a "see all posts" button take the place of See My Posts button 2) give the cancel buttons on the login/register page functionality 3) animate the rest of the buttons 4) CSS line 37 5) organize CSS
+// TODO 2) give the cancel buttons on the login/register page functionality 5) organize CSS 6) give search bar functionality 7) like posts
 
 import { entryList } from "./feed/JournalEntryList.js"
 import { getUsers, getPosts, usePostCollection, setLoggedInUser } from "./data/dataManager.js"

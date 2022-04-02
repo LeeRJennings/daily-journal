@@ -1,7 +1,7 @@
 export const postEdit = (postObj) => {
     return `
         <form action="">
-            <h2>Update Your Post</h2>             
+            <h2 id="editFormHeading">Update Your Post</h2>             
             
             <fieldset>
                 <label for="conceptsCovered">Concepts Covered:</label>

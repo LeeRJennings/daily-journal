@@ -17,6 +17,15 @@ button {
     background-color: white;
     color: darkslateblue;
     font-weight: bold; 
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(.90)
+}
+
+button:active {
+    transform: scale(.80) 
 }
 
 .recordButtonDiv {
@@ -32,13 +41,20 @@ h2 {
     color: white;
     padding: 10px 10px 0 17px;
     text-decoration: underline;
+    margin-bottom: -12px;
 }
 
-/* TODO change margins for h2 and h4 to make them less spaced out AND make the See My Posts button not look like poop */
+#editFormHeading {
+    color: white;
+    padding: 10px 10px 0 12px;
+    text-decoration: none;
+    margin-bottom: 8px;
+}
 
 h4 {
     color: white;
     padding: 10px 10px 0 17px;
+    margin-bottom: -10px;
 }
 
 form {
@@ -115,12 +131,12 @@ header {
     width: 100%;
     top: 0;
     z-index: 11;
-
 }
 
 #homeIcon {
     height: 70px;
     margin: 5px 20px 5px 3px;
+    cursor: pointer;
 }
 
 #homeIcon:hover {
@@ -132,7 +148,7 @@ header {
 }
 
 #searchBar {
-    margin: 27px 0 30px 40px;
+    margin: 30px 0 30px 40px;;
     height: 18px;
 }
 
@@ -172,4 +188,9 @@ header {
 
 .loginRegister h3 {
     color: darkslateblue
+}
+
+#notTheLogoutDiv button {
+    height: 23px;
+    margin: 30px 0 30px 40px
 }

@@ -8,7 +8,9 @@ export const header = () => {
             </div>
             <h1>Daily Journal</h1>
             <input type="text" name="searchBar" id="searchBar" placeholder="Search journal entries..."/>
-            <button id="seeUsersPosts">See My Posts</button>
+            <div class="seeUsersPostsDiv">
+                <button id="seeUsersPosts">See My Posts</button>
+            </div>
         </div>
         <div id="logoutDiv">
             <button id="logout" class="fakeLink">Logout</button>
