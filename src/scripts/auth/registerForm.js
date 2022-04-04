@@ -20,7 +20,7 @@ export const registerForm = () => {
                 
                 <div class="loginRegisterButtons">
                     <button id="register--submit">Register</button>
-                    <button id="login--cancel">Cancel</button>
+                    <button id="register--cancel">Cancel</button>
                 </div>
             </div>
         </div>
