@@ -12,12 +12,22 @@ export const events = () => {
     const headerEl = document.querySelector("header")
 
 
-//========================================================= function to clear out fields on new entry form =========================================================
+//========================================================= functions to clear out fields on entry forms =========================================================
     const clearEntryField = () => {
         document.querySelector("input[name='journalDate']").value = ""
         document.querySelector("select[name='mood']").value = ""
         document.querySelector("input[name='conceptsCovered']").value = ""
         document.querySelector("textarea[name='journalEntry']").value = ""
+    }
+
+    const clearLoginField = () => {
+        document.querySelector("input[name='name']").value = ""
+        document.querySelector("input[name='email']").value = ""
+    }
+
+    const clearRegisterField = () => {
+        document.querySelector("input[name='registerName']").value = ""
+        document.querySelector("input[name='registerEmail']").value = ""
     }
 
 //========================================================= scrolls to top of the page =========================================================
@@ -55,7 +65,7 @@ export const events = () => {
         }
     })
 
-//=========================================================  =========================================================
+//========================================================= see all posts after only seeing posts from logged in user =========================================================
     headerEl.addEventListener("click", event => {
         if (event.target.id === "seeAllPosts") {
         showEntryList()
@@ -195,6 +205,14 @@ export const events = () => {
         }
     })
 
+    mainEl.addEventListener("click", event => {
+        if (event.target.id === "login--cancel") {
+            clearLoginField()
+        } else if (event.target.id === "register--cancel") {
+            clearRegisterField()
+        }
+    })
+
 //========================================================= filters posts by year =========================================================
     footerEl.addEventListener("change", event => {
         if (event.target.id === "yearSelection") {
@@ -211,5 +229,4 @@ export const events = () => {
             moodFilteredPosts(moodToFilterBy)
         }
     })
-
 }
