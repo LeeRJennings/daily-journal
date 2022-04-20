@@ -34,7 +34,8 @@ button:active {
 }
 
 .entryButtonDiv {
-    margin: 0 14px
+    margin: 0 14px;
+    display: flex
 }
 
 h2 {
@@ -198,4 +199,8 @@ header {
 hr {
     height: 2px;
     background-color: darkslateblue;
+}
+
+.likes-text {
+    color: white
 }

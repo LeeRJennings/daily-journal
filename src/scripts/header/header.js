@@ -7,7 +7,7 @@ export const header = () => {
                 <img id="homeIcon" src="./images/crossed-swords-emoji-no-bg.png" alt="crossed swords emoji"/>
             </div>
             <h1>Daily Journal</h1>
-            <input type="text" name="searchBar" id="searchBar" placeholder="Search journal entries..."/>
+            <input type="text" name="searchBar" id="searchBar" placeholder="search feature in progress"/>
             <div class="seeUsersPostsDiv">
                 <button id="seeUsersPosts">See My Posts</button>
             </div>

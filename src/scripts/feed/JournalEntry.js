@@ -1,4 +1,4 @@
-import { getLoggedInUser } from "../data/dataManager.js";
+import { getLikes, getLoggedInUser } from "../data/dataManager.js";
 import { formatDate } from "../helpers/formatDate.js";
 
 export const JournalEntry = (entryObj) => {
@@ -28,6 +28,10 @@ export const JournalEntry = (entryObj) => {
                     <p>Mood: ${entryObj.mood}</p>
                     <p>Posted on: ${formatDate(entryObj.date)}</p>
                 </div>
+                <div class="entryButtonDiv">
+                    <button id="like--${entryObj.id}">I dig it</button>
+                    <p class="likes-text" id="likes--${entryObj.id}">${getNumberOfLikes(entryObj.id)}</p>
+                </div>
             </section>
         `
     }
@@ -38,4 +42,11 @@ export const showJournalEntry = () => {
     //Get a reference to the location on the DOM where the nav will display
     const entryElement = document.querySelector(".entryLog");
     entryElement.innerHTML = JournalEntry();
+}
+
+const getNumberOfLikes = (postId) => {
+    getLikes(postId)
+    .then(response => {
+        document.querySelector(`#likes--${postId}`).innerHTML = `👍 x ${response.length}`
+    })
 }

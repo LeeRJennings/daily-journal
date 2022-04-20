@@ -1,4 +1,4 @@
-// TODO 2) give the cancel buttons on the login/register page functionality 5) organize CSS 6) give search bar functionality 7) like posts
+// TODO 5) organize CSS 6) give search bar functionality
 
 import { entryList } from "./feed/JournalEntryList.js"
 import { getUsers, getPosts, usePostCollection, setLoggedInUser } from "./data/dataManager.js"

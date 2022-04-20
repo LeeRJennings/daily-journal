@@ -1,4 +1,4 @@
-import { getLoggedInUser, createPost, deletePost, getSinglePost, updatePost, logoutUser, loginUser, registerUser, getUsersPosts } from "../data/dataManager.js"
+import { getLoggedInUser, createPost, deletePost, getSinglePost, updatePost, logoutUser, loginUser, registerUser, getUsersPosts, addLike, getAllLikes } from "../data/dataManager.js"
 import { showNewEntryForm } from "../feed/newEntryForm.js"
 import { showEntryList, yearFilteredPosts, moodFilteredPosts, showEdit, journalStartUp, checkForUser } from "../main.js" 
 import { loginForm } from "../auth/loginForm.js"
@@ -210,6 +210,21 @@ export const events = () => {
             clearLoginField()
         } else if (event.target.id === "register--cancel") {
             clearRegisterField()
+        }
+    })
+
+//========================================================= adds new like when like button is clicked =========================================================
+    mainEl.addEventListener("click", event => {
+        if (event.target.id.startsWith("like")) {
+            const likeObj = {
+                postId: parseInt(event.target.id.split("--")[1]),
+                userId: getLoggedInUser().id
+            }
+            getAllLikes()
+            .then(likes => {
+                const likeExists = likes.find(like => like.postId === likeObj.postId && like.userId === likeObj.userId) 
+                likeExists ? "" : addLike(likeObj).then(() => showEntryList())
+            })
         }
     })
 

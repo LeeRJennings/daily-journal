@@ -89,7 +89,7 @@ export const updatePost = postObj => {
         },
         body: JSON.stringify(postObj)
     })
-        .then(response => response.json()) 
+    .then(response => response.json()) 
 }
 
 //========================================================= sets a logged in user =========================================================
@@ -125,4 +125,28 @@ export const registerUser = (userObj) => {
         setLoggedInUser(parsedUser)
         return getLoggedInUser()
     })
+}
+
+//========================================================= adds a new like to the DB =========================================================
+export const addLike = (likeObj) => {
+    return fetch(`http://localhost:6464/userLikes`, {
+        method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(likeObj)
+    })
+    .then(res => res.json())
+}
+
+//========================================================= gets likes for one post =========================================================
+export const getLikes = (postId) => {
+    return fetch(`http://localhost:6464/userLikes?postId=${postId}`)
+        .then(response => response.json())
+}
+
+//========================================================= gets all likes =========================================================
+export const getAllLikes = () => {
+    return fetch(`http://localhost:6464/userLikes`)
+        .then(response => response.json())
 }
